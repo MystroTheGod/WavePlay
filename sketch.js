@@ -5,7 +5,7 @@ let saveBtn;
 
 function setup() {
   const canvas = document.getElementById('myCanvas');
-  createCanvas(1920, 1080);
+  createCanvas(2000, 1125);
   noFill();
   
   
