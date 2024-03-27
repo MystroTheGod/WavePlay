@@ -1,10 +1,13 @@
+let canvasSizeSlider, lineWidthSlider;
 let waveAmplitudeSlider, waveFrequencySlider, waveSpeedSlider, numWavesSlider;
 let backgroundColorPicker, waveColorPicker, waveTypeSelector;
 let saveBtn;
 
 function setup() {
-  createCanvas(800, 400);
+  const canvas = document.getElementById('myCanvas');
+  createCanvas(1920, 1080);
   noFill();
+  
   
   // Amplitude Control
   createP('Amplitude').style('color', '#000000').style('font-family', 'Arial');
@@ -40,6 +43,13 @@ function setup() {
   waveTypeSelector.option('triangle');
   waveTypeSelector.option('sawtooth');
   
+
+
+// Line Width Control
+createP('Line Width').style('color', '#000000').style('font-family', 'Arial');
+lineWidthSlider = createSlider(1, 20, 10); // Min, max, default stroke weight
+
+  
   // Save Image Button
   saveBtn = createButton('Save Image');
   saveBtn.mousePressed(() => saveCanvas('waveArt', 'png'));
@@ -49,6 +59,8 @@ function draw() {
   stroke(waveColorPicker.value());
   strokeWeight(10);
   let numWaves = numWavesSlider.value();
+    // Adjust line width based on the slider
+  strokeWeight(lineWidthSlider.value());
   
   for (let n = 0; n < numWaves; n++) {
     beginShape();
